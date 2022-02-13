@@ -1,0 +1,21 @@
+{% extends 'article/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Главная страница</h1>
+    {% if info %}
+        {% for el in info %}
+            <div>
+            <img src="{{el.cover.url}}" align="left" vspace="5" hspace="5" height="150" width="150">
+            <h3>{{ el.title|wordwrap:43|linebreaks}}</h3>
+            {{ el.text|wordwrap:43|linebreaksbr }}
+            <p>{{el.pub_date}}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>У нас нет записей!</p>
+    {% endif %}
+{% endblock %}
